@@ -15,7 +15,7 @@
   <body>
     <div class="container">
       <h1>URL Shortener</h1>
-      <form action="" method="POST" class="my-4 form-inline">
+      <form action="/shortUrls" method="POST" class="my-4 form-inline">
         <label for="fullURL" class="form-label visually-hidden">URL</label>
         <input required placeholder="URL" type="url" name="fullURL" id="fullURL" class="form-control mr-2 col"/>
         <button type="submit" class="btn btn-success">Shorten</button>
@@ -28,15 +28,15 @@
           <th>Clicks</th>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <a href="https://hk-react-portfolio2.herokuapp.com/"
-                >https://hk-react-portfolio2.herokuapp.com/</a
-              >
-            </td>
-            <td><a href="/123456">123456</a></td>
-            <td>10</td>
-          </tr>
+            <% shortUrls.forEach(shortUrl => { %>
+                <tr>
+                    <td>
+                      <a href="<%= shortUrl.full %>"><%= shortUrl.full %></a>
+                    </td>
+                    <td><a href="<%= shortUrl.short %>"><%= shortUrl.short %></a></td>
+                    <td><%= shortUrl.clicks %></td>
+                  </tr>
+            <% }) %>
         </tbody>
       </table>
     </div>
